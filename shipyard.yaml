@@ -8,7 +8,9 @@ spec:
       sequences:
         - name: "delivery"
           tasks:
-            - name: "deployment"
+            - name: deployment
+              properties: 
+                deploymentstrategy: direct
             - name: "test"
             - name: "evaluation"
             - name: "release"
