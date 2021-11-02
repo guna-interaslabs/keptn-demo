@@ -6,11 +6,6 @@ spec:
   stages:
     - name: "hardening"
       sequences:
-        - name: "delivery"
-          tasks:
-            - name: "deployment"
-              properties:
-                deploymentstrategy: "blue_green_service"
             - name: "test"
               properties:
                 teststrategy: "performance"
@@ -22,7 +17,4 @@ spec:
           triggeredOn:
             - event: "hardening.delivery.finished"
           tasks:
-            - name: "deployment"
-              properties:
-                deploymentstrategy: "blue_green_service"
             - name: "release"
