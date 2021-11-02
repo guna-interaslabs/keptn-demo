@@ -6,14 +6,19 @@ spec:
   stages:
     - name: "hardening"
       sequences:
-        tasks:
-          - name: "test"
-          - name: "evaluation"
-          - name: "release"
+        - name: "delivery"
+          tasks:
+            - name: "deployment"
+            - name: "test"
+            - name: "evaluation"
+            - name: "release"
     - name: "production"
       sequences:
         - name: "delivery"
           triggeredOn:
             - event: "hardening.delivery.finished"
           tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
             - name: "release"
