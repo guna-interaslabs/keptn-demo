@@ -6,9 +6,10 @@ spec:
   stages:
     - name: "hardening"
       sequences:
-        - name: "test"
-        - name: "evaluation"
-        - name: "release"
+        tasks:
+          - name: "test"
+          - name: "evaluation"
+          - name: "release"
     - name: "production"
       sequences:
         - name: "delivery"
